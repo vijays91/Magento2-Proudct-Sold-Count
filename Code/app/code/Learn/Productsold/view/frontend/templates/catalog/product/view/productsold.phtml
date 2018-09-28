@@ -1,0 +1,33 @@
+<?php
+/**
+ * @author VIJAYAKUMAR S
+ * @copyright Copyright (c) 2018
+ * @package Learn_Productsold
+ */
+?>
+<?php
+$_product = $this->getCurrentProduct();
+$helper = $this->helperInit();
+
+$product_id = $_product->getId();
+$label = $_product->getSaleLabel();
+$offline = $_product->getOfflineSale();
+$online = $helper->getSoldQtyByProductId($product_id);
+
+$active = $helper->productsold_enable();
+$display = $helper->productsold_display();
+$min_count = $helper->productsold_min_count();
+$min_count = ($min_count) ? $min_count : 0;
+$label_default = $helper->productsold_text();
+
+$total_sale = 0;
+$total_sale = (($display == 1) ? $online : (($display == 2) ? $offline : ($online + $offline)));
+$label = (trim($label) == "") ? $label_default : $label;
+
+if(($total_sale >= $min_count) && ($active)) :
+?>
+<div class="product_sold std" id="product_sold">
+  	<b class="sold_label"><?php echo $label; ?></b>
+  	<b class="sold_total"><?php echo $total_sale; ?></b>
+</div>
+<?php endif; ?>

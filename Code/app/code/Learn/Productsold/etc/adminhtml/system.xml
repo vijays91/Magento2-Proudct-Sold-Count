@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author VIJAYAKUMAR S
+ * @copyright Copyright (c) 2018
+ * @package Learn_Productsold
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="vijaystore" translate="label" sortOrder="180">
+            <label>Vijay</label>
+        </tab>
+        <section id="productsold_tab" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Product sold</label>
+            <tab>vijaystore</tab>
+            <resource>Learn_Productsold::productsold_configuration</resource>
+            <group id="productsold_setting" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>Product Sold</label>
+                <field id="productsold_active" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Product Sold</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment></comment>
+                </field>
+                <field id="productsold_display" translate="label comment" type="radios" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Display In</label>
+                    <source_model>Learn\Productsold\Model\Source\Display</source_model>
+                    <validate>required-entry</validate>
+                    <comment></comment>
+                    <depends>
+                        <field id="*/*/productsold_active">1</field>
+                    </depends>
+                </field>
+                <field id="productsold_text" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Product Sold Text</label>
+                    <validate>required-entry</validate>
+                    <comment></comment>
+                    <depends>
+                        <field id="*/*/productsold_active">1</field>
+                    </depends>
+                </field>
+                <field id="productsold_min_count" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Product Sold Minimum Count</label>
+                    <validate>required-entry validate-number</validate>
+                    <comment>Set minimum count to display the sales count.</comment>
+                    <depends>
+                        <field id="*/*/productsold_active">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
