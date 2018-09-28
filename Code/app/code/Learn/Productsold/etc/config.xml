@@ -14,7 +14,7 @@
 				<productsold_active>1</productsold_active>
 				<productsold_display>1</productsold_display>
 				<productsold_min_count>0</productsold_min_count>
-				<productsold_text><![CDATA[Sold Count : %s]]></productsold_text>
+				<productsold_text><![CDATA[Sold Count :]]></productsold_text>
             </productsold_setting>
         </productsold_tab>
     </default>
